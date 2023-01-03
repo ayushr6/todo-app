@@ -57,20 +57,29 @@ function App() {
 
       {toDo && toDo.length ? '' : 'No Tasks...'}
 
-      {
-        toDo && toDo
+      {toDo && toDo
+        .sort((a,b) => a.id > b.id ? 1 : -1)
         .map( (task, index) => {
           return(
             <React.Fragment key={task.id}>
 
               <div className="col taskBg">
                 <div className={task.status ? 'done' : ''}>
-                <span className="taskText">{index + 1}</span>
-                <span className="taskText">{task.title}</span>
+                  <span className="taskNumber">{index + 1}</span>
+                  <span className="taskText">{task.title}</span>
+                </div>
+                <div className="iconsWrap">
+                  <span title="Completed / Not Completed">
+                    <FontAwesomeIcon icon={faCircleCheck}></FontAwesomeIcon>
+                  </span>
+                  <span title="Edit">
+                    <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                  </span>
+                  <span title="Delete">
+                    <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
+                  </span>
                 </div>
               </div>
-
-              
             </React.Fragment>
           )
         })
