@@ -54,6 +54,26 @@ function App() {
       <br /><br />
       <h2>To Do List App (ReactJS)</h2>
       <br /><br />
+
+      {toDo && toDo.length ? '' : 'No Tasks...'}
+
+      {
+        toDo && toDo
+        .map( (task, index) => {
+          return(
+            <React.Fragment key={task.id}>
+
+              <div className="col taskBg">
+                <div className={task.status ? 'done' : ''}></div>
+              </div>
+
+              <span className="taskText">{index + 1}</span>
+              <span className="taskText">{task.title}</span>
+            </React.Fragment>
+          )
+        })
+      }
+
     </div>
   );
 }
